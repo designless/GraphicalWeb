@@ -1,0 +1,414 @@
+@charset "utf-8";
+
+/* //////////////////////////////////////////////// 共通 //////////////////////////////////////////////// */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+	display: block;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 0.625em;
+	line-height: 1.6em;
+	font-family: Verdana, Arial, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+	width:100%;
+	height:100%;
+}
+
+html {
+	font-size: 100%;
+	overflow-y: scroll;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+a:focus {
+	outline: thin dotted;
+}
+a:hover, a:active {
+	outline: 0;
+}
+
+ul {
+	list-style: none;
+	list-style-image: none;
+	margin: 0;
+	padding: 0;
+}
+img {
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+	vertical-align: middle;
+}
+
+/* //////////////////////////////////////////////// 固有設定 //////////////////////////////////////////////// */
+body {
+	background: #000; /* 全体の背景色 */
+	color: #fff; /* 全体の文字色 */
+}
+
+a:hover,
+a:active {
+	color: #666; /* マウスオーバーのリンク色 */
+}
+
+/* //////////////////////////////////////////////// ヘッダー //////////////////////////////////////////////// */
+h1 {
+	position: absolute;
+	z-index: 9000;
+	margin: 0;
+	padding: 0;
+}
+
+/* //////////////////////////////////////////////// ナビゲーション //////////////////////////////////////////////// */
+
+nav {
+	position: absolute;
+	z-index: 20000;
+	width: 100%;
+	height: 40px;
+}
+
+nav ul {
+	float: right;
+}
+
+nav li {
+	float: left;
+	width: 99px;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 1px;
+	text-align: center;
+}
+
+nav li a {
+	display: block;
+	text-decoration: none;
+}
+
+/* //////////////////////////////////////////////// 記事 //////////////////////////////////////////////// */
+
+h2 { /* 記事内の小見出し１ */
+	font-size: 200%;
+	margin-bottom: 30px;
+}
+
+h3 { /* 記事内の小見出し２ */
+	font-size: 150%;
+}
+
+h4 { /* 記事内の小見出し３ */
+	font-size: 100%;
+	padding-left: 1em;
+	border-left: 4px solid #fff;
+}
+
+p { /* 記事内のテキスト */
+	line-height: 2;
+	margin-bottom: 30px;
+}
+
+.inner ul {
+	margin-left: 2em;
+	list-style: disc;
+	line-height: 2;
+}
+
+
+/* //////////////////////////////////////////////// 背景スライド //////////////////////////////////////////////// */
+#maximage {
+	display: none;
+	position: fixed !important;
+}
+
+#maximageNav {
+	position: fixed;
+	right:0;
+	top: 30%;
+	z-index: 9000;
+}
+
+#maximageNav li {
+	margin-bottom: 1px;
+}
+
+div.mc-image {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 100%;
+	overflow: hidden;
+	width: 100%;
+}
+
+/* //////////////////////////////////////////////// フッター //////////////////////////////////////////////// */
+footer {
+ position: fixed;
+ bottom: 30px;
+ right: 30px;
+ text-align: right;
+ width: 100%;
+ color: #fff;
+ z-index: 20;
+}
+
+/* //////////////////////////////////////////////// レスポンシブ //////////////////////////////////////////////// */
+
+/* スマートフォン 横幅320px〜 */
+@media only screen and (min-width: 320px) {
+
+nav {
+	right: 0;
+	top: 0;
+}
+
+.inner {
+	margin-top: 200px;
+	margin-left: 30px;
+	margin-right: 75px;
+}
+
+div#modalBox div#modalBoxBody div#modalBoxCloseButton {
+	top:-150px;
+	right:10px;
+}
+
+}
+
+/* タブレット 横幅480px〜*/
+@media only screen and (min-width: 480px) {
+
+nav {
+	right: 0;
+	top: 80%;
+}
+
+.inner {
+	margin-top: 63px;
+	margin-left: 180px;
+	margin-right: 100px;
+}
+
+div#modalBox div#modalBoxBody div#modalBoxCloseButton {
+	top:-65px;
+	right:0;
+}
+}
+
+/* デスクトップ 横幅1000px〜 */
+@media only screen and (min-width: 1000px) {
+
+}
+
+
+/* //////////////////////////////////////////////// オプション //////////////////////////////////////////////// */
+#window01,
+#window02,
+#window03 {
+	display: none;
+}
+
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+.clearfix:before, .clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after {
+	clear: both;
+}
+.clearfix {
+	zoom: 1;
+}
+
+/* //////////////////////////////////////////////// モーダルボックス共通 //////////////////////////////////////////////// */
+
+.modalboxContent {
+	display:none;
+}
+.modalgallery {
+	display:block;
+}
+
+div#modalBox.modalboxIsDraggable div#modalBoxBody div.modalboxStyleContainer_surface_top,
+div#modalBox.modalboxIsDraggable div#modalBoxBody div.modalboxStyleContainer_surface_bottom {
+	cursor:move;
+}
+div#modalBoxFaderLayer {
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:9999;
+}
+div#modalBoxAjaxLoader {
+	background:transparent url(../images/ajax-loader.gif) 50% 40% no-repeat;
+	padding:120px 100px 80px 100px;
+	text-align:center;
+	overflow:hidden;
+}
+div#modalBox {
+	display:none;
+	position:fixed;
+	z-index:10000;
+	text-align:left;
+	background-color:transparent;
+	width:100%;
+}
+
+div#modalBox div#modalBoxBody {
+	position:relative;
+}
+
+div#modalBox.disablingClickToClose div#modalBoxBody div#modalBoxCloseButton {
+	display:none;
+}
+
+div#modalBox.modalBoxSingleImage div#modalBoxBody div.modalboxStyleContainerContent a.modalBoxImageLink {
+	display:block;
+}
+div#modalBox.modalBoxSingleImage div#modalBoxBody div.modalboxStyleContainerContent img.modalBoxImagePreload {
+	visibility:hidden;
+}
+
+div#modalBox.modalBoxSingleImage div#modalBoxBody div.modalboxStyleContainerContent img.modalBoxImageNoLink {
+	cursor:pointer;
+}
+
+
+/* clearfix */
+.modalboxStyleContainerContent:after,
+.modalBoxBodyContent:after {
+	content:".";
+	display:block;
+	height:0;
+	line-height:0;
+	clear:both;
+	visibility:hidden;
+}
+* html .modalboxStyleContainerContent,
+* html .modalBoxBodyContent {/*IE6*/
+	zoom:1;
+	display:block;
+}
+*+html .modalboxStyleContainerContent,
+*+html .modalBoxBodyContent {/*IE7*/
+	zoom:1;
+	display:block;
+}
+
+/* skin precious-white - BEGIN */
+
+
+/* modalBoxBodyContent */
+div#modalBox div#modalBoxBody div.modalBoxBodyContent {
+}
+div#modalBox.modalBoxBodyContentImageContainer div#modalBoxBody div.modalBoxBodyContent {
+	padding:0;
+}
+
+/* modalBoxCloseButton */
+div#modalBox div#modalBoxBody div#modalBoxCloseButton {
+	position: absolute;
+	width:100px;
+	height:100px;
+	background-image:url(../images/close.png);
+}
+div#modalBox div#modalBoxBody div#modalBoxCloseButton a.closeModalBox,
+div#modalBox div#modalBoxBody div#modalBoxCloseButton a.closeModalBox span {
+	text-decoration:none;
+	color:#f4f4f4;
+	cursor:pointer;
+}
+div#modalBox div#modalBoxBody div#modalBoxCloseButton a.closeModalBox {
+	display:block;
+	width:107px;
+	height:122px;
+}
+div#modalBox div#modalBoxBody div#modalBoxCloseButton a.closeModalBox span {
+	display:none;
+}
+
+
+div#modalBox div#modalBoxBody {
+	padding:0;
+}
+div#modalBox div#modalBoxBody div.modalboxStyleContainerContent {
+	padding:0;
+}
+
+/* set image sprite */
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_surface_top div.modalboxStyleContainer_surface_body,
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_surface_bottom div.modalboxStyleContainer_surface_body,
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_corner_topLeft,
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_corner_topRight,
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_corner_bottomLeft,
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_corner_bottomRight {
+	background-color:transparent;
+}
+/* modalboxStyleContainer_corner */
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_corner_topLeft,
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_corner_topRight,
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_corner_bottomLeft,
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_corner_bottomRight {
+	background-repeat:no-repeat;
+	position:absolute;
+	width:36px;
+}
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_corner_topLeft{
+	background-position:0 -72px;
+	left:0;
+	top:0;
+	height:36px;
+}
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_corner_topRight{
+	background-position:-36px -72px;
+	right:0;
+	top:0;
+	height:36px;
+}
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_corner_bottomLeft{
+	background-position:0 -108px;
+	left:0;
+	bottom:0;
+	height:36px;
+}
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_corner_bottomRight{
+	background-position:-36px -108px;
+	right:0;
+	bottom:0;
+	height:36px;
+}
+/* modalboxStyleContainer_surface */
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_surface_top,
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_surface_bottom {
+	position:absolute;
+	width:100%;
+}
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_surface_top div.modalboxStyleContainer_surface_body,
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_surface_bottom div.modalboxStyleContainer_surface_body {
+	background-color:transparent;
+	background-repeat:repeat-x;
+	margin:0 36px;
+}
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_surface_top {
+	left:0;
+	top:0;
+}
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_surface_top div.modalboxStyleContainer_surface_body {
+	height:36px;
+	background-position:0 0;
+}
+div#modalBox div#modalBoxBody div.modalboxStyleContainer_surface_bottom {
+	left:0;
+	bottom:0;
+}
